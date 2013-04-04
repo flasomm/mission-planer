@@ -1,0 +1,71 @@
+Position:
+   actAs: { Timestampable: ~ }
+   columns:
+      titre:         { type: string(150), notnull: true }
+      commentaire:   { type: string(255) }
+
+Contact:
+  actAs: { Timestampable: ~ }
+  columns:
+    nom:          { type: string(150), notnull: true }
+    prenom:       { type: string(150), notnull: true }
+    position_id:  { type: integer(8), notnull: true }
+    email:        { type: string(255) }
+    company_id:   { type: integer(8), notnull: true }
+    telephone:    { type: string(20) }
+    mobile:       { type: string(20) }
+    email:        { type: string(255) }
+    commentaire:  { type: string(255) }
+    rappel:       { type: boolean, notnull: true, default: 1 }
+  relations:
+    Company: { local: company_id, foreign: id } 
+    Position: { local: position_id, foreign: id } 
+
+
+Company:
+   actAs: { Timestampable: ~ }
+   columns:
+#      contact_id:   { type: integer(8), notnull: true }
+      nom:          { type: string(150), notnull: true }
+      logo:         { type: string(100) }
+      url:          { type: string(255) }
+      telephone:    { type: string(20) }
+      adresse:      { type: string(255), notnull: true }
+      code_postal:  { type: string(10), notnull: true }
+      ville:        { type: string(120), notnull: true }
+      commentaire:  { type: string(255) }
+#   relations:
+#      Contact: { local: contact_id, foreign: id } 
+
+
+Job:
+   actAs: { Timestampable: ~ }
+   columns:
+      date_presentation:   { type: timestamp }
+      position_id:         { type: integer(8), notnull: true }
+      tjm:                 { type: float, notnull: true }
+      client_id:           { type: integer(8), notnull: true }
+      statut:              { type: boolean, notnull: true, default: 1 }
+      commentaire:         { type: string(255) }
+   relations:
+      Company: { local: client_id, foreign: id }
+      Position: { local: position_id, foreign: id } 
+
+
+JobCompany:
+   columns:
+      company_id:    { type: integer(8), primary: true, notnull: true }
+      job_id:        { type: integer(8), primary: true, notnull: true }
+   relations:
+      Company:  { local: company_id, foreign: id, class: Company, onDelete: CASCADE }
+      Job:      { local: job_id, foreign: id, class: Job, onDelete: CASCADE }
+
+JobContact:
+   columns:
+      contact_id:    { type: integer(8), primary: true, notnull: true }
+      job_id:        { type: integer(8), primary: true, notnull: true }
+   relations:
+      Contact:  { local: contact_id, foreign: id, class: Contact, onDelete: CASCADE }
+      Job:      { local: job_id, foreign: id, class: Job, onDelete: CASCADE }
+
+      
