@@ -26,17 +26,16 @@
                 <li><a href="<?php echo url_for('position/index') ?>">Positions</a></li>
               </ul>
             </div>
- 
+
             <div class="search">
               <h2>Search</h2>
-              <form action="" method="get">
-                <input type="text" name="keywords"
-                  id="search_keywords" />
-                <input type="submit" value="search" />
-                <div class="help">
-                  Enter some keywords (city, country, position, ...)
-                </div>
-              </form>
+			<form action="" method="get">
+			  <input type="text" name="query" value="<?php echo $sf_request->getParameter('query') ?>" id="search_keywords" />
+			  <input type="submit" value="search" />
+			  <div class="help">
+			    Enter some keywords (city, country, position, ...)
+			  </div>
+			</form>
             </div>
           </div>
         </div>

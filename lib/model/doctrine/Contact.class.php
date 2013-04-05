@@ -16,4 +16,51 @@ class Contact extends BaseContact
 	{
     	return $this->getNom() . ' '. $this->getPrenom();
   	}	
+
+	// public function save(Doctrine_Connection $conn = null)
+	// {
+	//   $ret = parent::save($conn);
+	//   $this->updateLuceneIndex();
+	//   return $ret;
+	// }	
+	// 
+	// public function delete(Doctrine_Connection $conn = null)
+	// {
+	//   $index = ContactTable::getLuceneIndex();
+	// 
+	//   foreach ($index->find('pk:'.$this->getId()) as $hit)
+	//   {
+	//     $index->delete($hit->id);
+	//   }
+	// 
+	//   return parent::delete($conn);
+	// }
+	// 
+	// public function updateLuceneIndex()
+	// {
+	//   $index = ContactTable::getLuceneIndex();
+	// 
+	//   // remove existing entries
+	//   foreach ($index->find('pk:'.$this->getId()) as $hit)
+	//   {
+	//     $index->delete($hit->id);
+	//   }
+	// 
+	//   $doc = new Zend_Search_Lucene_Document();
+	// 
+	//   // store job primary key to identify it in the search results
+	//   $doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $this->getId()));
+	// 
+	//   // index job fields
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('nom', $this->getNom(), 'utf-8'));
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('prenom', $this->getPrenom(), 'utf-8'));	
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('email', $this->getEmail(), 'utf-8'));
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('telephone', $this->getTelephone(), 'utf-8'));
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('mobile', $this->getMobile(), 'utf-8'));
+	//   $doc->addField(Zend_Search_Lucene_Field::UnStored('commentaire', $this->getCommentaire(), 'utf-8'));
+	// 
+	//   // add job to the index
+	//   $index->addDocument($doc);
+	//   $index->commit();
+	// }
 }

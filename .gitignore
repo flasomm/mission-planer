@@ -4,6 +4,12 @@ web/uploads/*
 config/databases.yml
 config/propel.ini
 data/sql/*
+data/company.dev.index
+data/contact.dev.index
+data/contact.prod.index
+data/fixtures/data.yml
+data/job.dev.index
+data/job.prod.index
 cache/*
 lib/filter/doctrine/base/Base*
 lib/filter/doctrine/*Plugin/base/Base*

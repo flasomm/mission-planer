@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: job, action: index }
 
+# search:
+#    url:   /search
+#    param: { module: job, action: search }
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

@@ -36,7 +36,7 @@ body{font:14px "Lucida Grande",Lucida,Verdana,sans-serif;background-color:#828f9
 #sub_header .search input{background:url(../images/button-search.jpg) no-repeat;text-indent:-9999px;border:0;width:95px;height:40px;margin-left:10px;}
 #sub_header .search input:hover{background-position:left -40px;}
 #sub_header .search input:active{background-position:left -80px;}
-#sub_header .search input#search_keywords{font-size:160%;line-height:1.5em;margin-bottom:3px;margin-left:0px;width:579px;height:27px;border:0;background:url(../images/search-box.jpg);text-indent:0;color:#666;}
+#sub_header .search input#search_keywords{font-size:100%;line-height:1.5em;margin-bottom:3px;margin-left:0px;width:579px;height:27px;border:0;background:url(../images/search-box.jpg);text-indent:0;color:#666;}
 #sub_header .post h2{display:none;}
 #sub_header .post div a{display:inline;text-indent:-9999px;width:150px;height:48px;}
 #sub_header ul{padding:0;margin:0;list-style-type:none;}

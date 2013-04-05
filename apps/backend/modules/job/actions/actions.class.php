@@ -84,4 +84,16 @@ class jobActions extends sfActions
       $this->redirect('job/edit?id='.$job->getId());
     }
   }
+
+	// public function executeSearch(sfWebRequest $request)
+	//   	{
+	// 	$this->logMessage('info', $request->getParameter('query'));
+	//     	$this->forwardUnless($query = $request->getParameter('query'), 'job', 'index');
+	//     	$this->jobs = Doctrine_Core::getTable('Job')->getForLuceneQuery($query);
+    	//$contacts = Doctrine_Core::getTable('Contact')->getForLuceneQuery($query);
+    	//$companys = Doctrine_Core::getTable('Company')->getForLuceneQuery($query);
+
+		//$this->results = array_merge($jobs, $contacts, $companys);
+		//sfContext::getInstance()->getLogger()->debug($this->results);
+  	// }
 }
