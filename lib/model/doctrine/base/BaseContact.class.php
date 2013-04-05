@@ -109,7 +109,7 @@ abstract class BaseContact extends sfDoctrineRecord
 
         $this->hasMany('Job', array(
              'local' => 'id',
-             'foreign' => 'position_id'));
+             'foreign' => 'contact_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

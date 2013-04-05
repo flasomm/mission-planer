@@ -16,6 +16,7 @@ class ContactForm extends BaseContactForm
 		$this['created_at'], $this['updated_at']
 	);	
 	
-	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();	
+	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();
+	$this->widgetSchema['company_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => false, 'order_by' => array('nom', 'asc')));
   }
 }

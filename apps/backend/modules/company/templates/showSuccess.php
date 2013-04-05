@@ -1,4 +1,5 @@
 <?php use_stylesheet('job.css') ?>
+<?php use_stylesheet('jobs.css') ?>
 <?php use_helper('Text') ?>
  
 <div id="job">
@@ -23,6 +24,13 @@
     <?php echo simple_format_text($company->getCommentaire()) ?>
   </div>
  
+	<?php if(sizeof($contacts)>0): ?>
+		<div class="contacts">
+			<h4>Contacts</h4>
+			<?php include_partial('contact/list', array('contacts' => $contacts)) ?>
+		</div>
+	<?php endif; ?>
+
   <div class="meta">
     <small>posted on <?php echo $company->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
   </div>

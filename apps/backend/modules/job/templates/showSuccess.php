@@ -10,7 +10,7 @@
 	<small> - <?php echo ($job->getTjm() . " €/jour") ?></small>	
   </h3>
 	
-	Contact : <?php echo ($job->getContact()->__toString()) ?><br/>
+   <h4>Contact : <?php echo ($job->getContact()->__toString()) ?></4>
  
   <?php if ($job->getFournisseur()->getLogo()): ?>
     <div class="logo">

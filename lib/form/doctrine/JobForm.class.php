@@ -18,6 +18,13 @@ class JobForm extends BaseJobForm
 	
 	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();
 	$this->widgetSchema['date_presentation'] = new sfWidgetFormDateTime(array('date' =>array('format'=>'%day%/%month%/%year%')));
+	$this->widgetSchema['fournisseur_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Fournisseur'), 'add_empty' => false, 'order_by' => array('nom', 'asc')));
+	$this->widgetSchema['client_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Client'), 'add_empty' => false, 'order_by' => array('nom', 'asc')));	
+	$this->widgetSchema['contact_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Contact'), 'add_empty' => false, 'order_by' => array('nom', 'asc')));		
+	$this->widgetSchema['position_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Position'), 'add_empty' => false, 'order_by' => array('titre', 'asc')));			
+	
+	
+
 	
   }
 }

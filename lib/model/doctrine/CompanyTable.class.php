@@ -16,4 +16,5 @@ class CompanyTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Company');
     }
+
 }

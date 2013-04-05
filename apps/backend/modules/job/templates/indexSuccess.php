@@ -3,29 +3,44 @@
 <?php use_stylesheet('jobs.css') ?>
  
 <div id="jobs">
-  <table class="jobs">
-    <?php foreach ($jobs as $i => $job): ?>
-      <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>"> 
-        <td class="date"><?php echo $job->getDateTimeObject('date_presentation')->format('d/m/Y H:m') ?></td>
-		<td class="position">
-			<a href="<?php echo url_for('job/show?id='.$job->getId()) ?>">
-				<?php echo $job->getPosition() ?>
-			</a>
-		</td>
-		<td class="client">
-			<a href="<?php echo url_for('company/show?id='.$job->getClient()->getId()) ?>">
-        		<?php echo $job->getClient()->getNom() ?>
-			</a>
-		</td>
-        <td class="ville"><?php echo $job->getClient()->getVille() ?></td>
-		<td class="company">
-			<a href="<?php echo url_for('company/show?id='.$job->getFournisseur()->getId()) ?>">
-        		<?php echo $job->getFournisseur()->getNom() ?>
-			</a>
-		</td>
-      </tr>
-    <?php endforeach ?>
-  </table>
+
+	<?php include_partial('job/list', array('jobs' => $pager->getResults())) ?>
+
+	<?php if ($pager->haveToPaginate()): ?>
+	  <div class="pagination">
+	    <a href="<?php echo url_for('job/index?page='.$pager->getFirstPage()) ?>">
+	      <img src="/images/first.png" alt="First page" title="First page" />
+	    </a>
+
+	    <a href="<?php echo url_for('job/index?page='.$pager->getPreviousPage()) ?>">
+	      <img src="/images/previous.png" alt="Previous page" title="Previous page" />
+	    </a>
+	
+	    <?php foreach ($pager->getLinks() as $page): ?>
+	      <?php if ($page == $pager->getPage()): ?>
+	        <?php echo $page ?>
+	      <?php else: ?>
+	        <a href="<?php echo url_for('job/index?page='.$page) ?>"><?php echo $page ?></a>
+	      <?php endif; ?>
+	    <?php endforeach; ?>
+	
+	    <a href="<?php echo url_for('job/index?page='.$pager->getNextPage()) ?>">
+	      <img src="/images/next.png" alt="Next page" title="Next page" />
+	    </a>	
+
+	    <a href="<?php echo url_for('job/index?page='.$pager->getLastPage()) ?>">
+	      <img src="/images/last.png" alt="Last page" title="Last page" />
+	    </a>
+	  </div>
+	<?php endif; ?>
+
+	<div class="pagination_desc">
+	  <strong><?php echo count($pager) ?></strong> missions
+
+	  <?php if ($pager->haveToPaginate()): ?>
+	    - page <strong><?php echo $pager->getPage() ?>/<?php echo $pager->getLastPage() ?></strong>
+	  <?php endif; ?>
+	</div>
 
   <div style="padding: 20px 0">
 	<hr />

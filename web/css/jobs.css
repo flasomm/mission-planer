@@ -13,13 +13,13 @@
 .jobs td.telephone,
 .jobs td.location{border-right:1px dotted #999;}
 .jobs .location{color:#524F46;font-weight:bold;width:30%;}
-.jobs .ville{color:#524F46;width:32%;}
+.jobs .ville{color:#524F46;width:20%;}
 .jobs .ville_right{color:#524F46;width:32%;}
 .jobs .date{color:#524F46;width:27%;}
-.jobs .nom{color:#524F46;font-weight:bold;width:23%;}
-.jobs .telephone{color:#524F46;width:21%;}
+.jobs .nom{color:#524F46;font-weight:bold;width:20%;}
+.jobs .telephone{color:#524F46;width:22%;}
 .jobs .company{color:#d2813f;font-weight:bold;width:30%;}
-.jobs .client{color:#d2813f;font-weight:bold;width:30%;}
+.jobs .client{color:#d2813f;font-weight:bold;width:20%;}
 .jobs .position{color:#524F46;font-weight:bold;width:30%;}
 .jobs .position a{display:block;text-decoration:none;}
 .jobs .position a:hover{text-decoration:underline;}

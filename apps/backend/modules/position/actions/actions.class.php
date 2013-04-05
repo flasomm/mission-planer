@@ -14,6 +14,7 @@ class positionActions extends sfActions
   {
     $this->positions = Doctrine_Core::getTable('Position')
       ->createQuery('a')
+	  ->orderBy('a.titre ASC')
       ->execute();
   }
 

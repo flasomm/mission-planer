@@ -53,7 +53,7 @@ Job:
       Fournisseur: { class: Company, local: fournisseur_id, foreign: id } 
       Client: { class: Company, local: client_id, foreign: id }
       Position: { class: Position, local: position_id, foreign: id } 
-      Contact: { class: Contact, local: position_id, foreign: id }       
+      Contact: { class: Contact, local: contact_id, foreign: id }       
 
 
 # JobCompany:

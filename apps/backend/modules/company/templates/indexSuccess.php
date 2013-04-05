@@ -3,21 +3,44 @@
 <?php use_stylesheet('jobs.css') ?>
 
 <div id="jobs">
-  <table class="jobs">
-    <?php foreach ($companys as $i => $company): ?>
-      <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
-        <td class="location">
-			<a href="<?php echo url_for('company/show?id='.$company->getId()) ?>">
-				<?php echo $company->getNom() ?>
-			</a>
-		</td>
-        <td class="telephone">
-			<?php echo $company->getTelephone() ?>
-        </td>
-        <td class="ville_right"><?php echo $company->getVille() ?></td>
-      </tr>
-    <?php endforeach ?>
-  </table>
+
+	<?php include_partial('company/list', array('companys' => $pager->getResults())) ?>
+
+	<?php if ($pager->haveToPaginate()): ?>
+	  <div class="pagination">
+	    <a href="<?php echo url_for('company/index?page='.$pager->getFirstPage()) ?>">
+	      <img src="/images/first.png" alt="First page" title="First page" />
+	    </a>
+	
+	    <a href="<?php echo url_for('company/index?page='.$pager->getPreviousPage()) ?>">
+	      <img src="/images/previous.png" alt="Previous page" title="Previous page" />
+	    </a>
+
+	    <?php foreach ($pager->getLinks() as $page): ?>
+	      <?php if ($page == $pager->getPage()): ?>
+	        <?php echo $page ?>
+	      <?php else: ?>
+	        <a href="<?php echo url_for('company/index?page='.$page) ?>"><?php echo $page ?></a>
+	      <?php endif; ?>
+	    <?php endforeach; ?>
+
+	    <a href="<?php echo url_for('company/index?page='.$pager->getNextPage()) ?>">
+	      <img src="/images/next.png" alt="Next page" title="Next page" />
+	    </a>	
+
+	    <a href="<?php echo url_for('company/index?page='.$pager->getLastPage()) ?>">
+	      <img src="/images/last.png" alt="Last page" title="Last page" />
+	    </a>
+	  </div>
+	<?php endif; ?>
+
+	<div class="pagination_desc">
+	  <strong><?php echo count($pager) ?></strong> entreprises
+
+	  <?php if ($pager->haveToPaginate()): ?>
+	    - page <strong><?php echo $pager->getPage() ?>/<?php echo $pager->getLastPage() ?></strong>
+	  <?php endif; ?>
+	</div>
 
   <div style="padding: 20px 0">
 	<hr />

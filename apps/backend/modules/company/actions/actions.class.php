@@ -12,13 +12,22 @@ class companyActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->companys = Doctrine_Core::getTable('Company')
-      ->createQuery('a')
-      ->execute();
+	$query = Doctrine_Core::getTable('Company')->createQuery('a')->orderBy('a.nom ASC');	
+	//sfContext::getInstance()->getLogger()->debug(sfConfig::get('app_max_page_on_homepage'));
+	$this->pager = new sfDoctrinePager('Company', sfConfig::get('app_max_page_on_homepage'));
+	$this->pager->setQuery($query);
+	$this->pager->setPage($request->getParameter('page', 1));
+	$this->pager->init();	
+
+	  // $this->companys = Doctrine_Core::getTable('Company')
+	  // ->createQuery('a')
+	  // ->orderBy('a.nom ASC')
+	  // ->execute();
   }
 
   public function executeShow(sfWebRequest $request)
-  {
+  {	
+	$this->contacts = Doctrine_Core::getTable('Contact')->getContactsByCompanyId($request->getParameter('id'));
     $this->company = Doctrine_Core::getTable('Company')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->company);
   }

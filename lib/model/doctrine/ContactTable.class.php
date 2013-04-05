@@ -16,4 +16,19 @@ class ContactTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Contact');
     }
+
+    /**
+     * Returns a list of jobs by contact id.
+     *
+     * @return object JobTable
+     */
+	public function getContactsByCompanyId($companyId) 
+	{
+		$q = $this->createQuery('j')
+			->where('j.company_id = ?', $companyId)
+			->orderBy('j.nom DESC');
+
+		return $q->execute();
+	}
+
 }
