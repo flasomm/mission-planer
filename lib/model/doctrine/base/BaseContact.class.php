@@ -16,7 +16,7 @@
  * @property boolean $rappel
  * @property Company $Company
  * @property Position $Position
- * @property Doctrine_Collection $JobContact
+ * @property Doctrine_Collection $Job
  * 
  * @method string              getNom()         Returns the current record's "nom" value
  * @method string              getPrenom()      Returns the current record's "prenom" value
@@ -29,7 +29,7 @@
  * @method boolean             getRappel()      Returns the current record's "rappel" value
  * @method Company             getCompany()     Returns the current record's "Company" value
  * @method Position            getPosition()    Returns the current record's "Position" value
- * @method Doctrine_Collection getJobContact()  Returns the current record's "JobContact" collection
+ * @method Doctrine_Collection getJob()         Returns the current record's "Job" collection
  * @method Contact             setNom()         Sets the current record's "nom" value
  * @method Contact             setPrenom()      Sets the current record's "prenom" value
  * @method Contact             setPositionId()  Sets the current record's "position_id" value
@@ -41,7 +41,7 @@
  * @method Contact             setRappel()      Sets the current record's "rappel" value
  * @method Contact             setCompany()     Sets the current record's "Company" value
  * @method Contact             setPosition()    Sets the current record's "Position" value
- * @method Contact             setJobContact()  Sets the current record's "JobContact" collection
+ * @method Contact             setJob()         Sets the current record's "Job" collection
  * 
  * @package    Physalix_Backend
  * @subpackage model
@@ -107,9 +107,9 @@ abstract class BaseContact extends sfDoctrineRecord
              'local' => 'position_id',
              'foreign' => 'id'));
 
-        $this->hasMany('JobContact', array(
+        $this->hasMany('Job', array(
              'local' => 'id',
-             'foreign' => 'contact_id'));
+             'foreign' => 'position_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

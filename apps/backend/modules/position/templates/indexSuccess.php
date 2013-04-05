@@ -1,4 +1,4 @@
-<h1>Positions List</h1>
+<h1>Liste des Positions</h1>
 
 <?php use_stylesheet('jobs.css') ?>
  
@@ -14,6 +14,11 @@
       </tr>
     <?php endforeach ?>
   </table>
+
+  <div style="padding: 20px 0">
+	<hr />
+ 	<a href="<?php echo url_for('position/new') ?>">Ajouter une position</a>
+  </div>
 </div>
 
-  <a href="<?php echo url_for('position/new') ?>">New</a>
+ 

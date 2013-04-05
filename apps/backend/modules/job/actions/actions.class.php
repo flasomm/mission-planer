@@ -36,7 +36,7 @@ class jobActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    $this->setTemplate('new');
+    $this->redirect('job/index');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -71,8 +71,8 @@ class jobActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $job = $form->save();
-
+      	$job = $form->save();
+		
       $this->redirect('job/edit?id='.$job->getId());
     }
   }

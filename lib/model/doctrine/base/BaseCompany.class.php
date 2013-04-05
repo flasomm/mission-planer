@@ -15,7 +15,6 @@
  * @property string $commentaire
  * @property Doctrine_Collection $Contact
  * @property Doctrine_Collection $Job
- * @property Doctrine_Collection $JobCompany
  * 
  * @method string              getNom()         Returns the current record's "nom" value
  * @method string              getLogo()        Returns the current record's "logo" value
@@ -27,7 +26,6 @@
  * @method string              getCommentaire() Returns the current record's "commentaire" value
  * @method Doctrine_Collection getContact()     Returns the current record's "Contact" collection
  * @method Doctrine_Collection getJob()         Returns the current record's "Job" collection
- * @method Doctrine_Collection getJobCompany()  Returns the current record's "JobCompany" collection
  * @method Company             setNom()         Sets the current record's "nom" value
  * @method Company             setLogo()        Sets the current record's "logo" value
  * @method Company             setUrl()         Sets the current record's "url" value
@@ -38,7 +36,6 @@
  * @method Company             setCommentaire() Sets the current record's "commentaire" value
  * @method Company             setContact()     Sets the current record's "Contact" collection
  * @method Company             setJob()         Sets the current record's "Job" collection
- * @method Company             setJobCompany()  Sets the current record's "JobCompany" collection
  * 
  * @package    Physalix_Backend
  * @subpackage model
@@ -97,11 +94,7 @@ abstract class BaseCompany extends sfDoctrineRecord
 
         $this->hasMany('Job', array(
              'local' => 'id',
-             'foreign' => 'client_id'));
-
-        $this->hasMany('JobCompany', array(
-             'local' => 'id',
-             'foreign' => 'company_id'));
+             'foreign' => 'fournisseur_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

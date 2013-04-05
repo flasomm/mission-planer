@@ -16,10 +16,12 @@ abstract class BaseJobForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'                => new sfWidgetFormInputHidden(),
+      'client_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Client'), 'add_empty' => false)),
       'date_presentation' => new sfWidgetFormDateTime(),
       'position_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Position'), 'add_empty' => false)),
       'tjm'               => new sfWidgetFormInputText(),
-      'client_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => false)),
+      'fournisseur_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Fournisseur'), 'add_empty' => false)),
+      'contact_id'        => new sfWidgetFormInputText(),
       'statut'            => new sfWidgetFormInputCheckbox(),
       'commentaire'       => new sfWidgetFormInputText(),
       'created_at'        => new sfWidgetFormDateTime(),
@@ -28,10 +30,12 @@ abstract class BaseJobForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'date_presentation' => new sfValidatorDateTime(),
+      'client_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Client'))),
+      'date_presentation' => new sfValidatorDateTime(array('required' => false)),
       'position_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Position'))),
       'tjm'               => new sfValidatorNumber(),
-      'client_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'))),
+      'fournisseur_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Fournisseur'))),
+      'contact_id'        => new sfValidatorInteger(),
       'statut'            => new sfValidatorBoolean(array('required' => false)),
       'commentaire'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'        => new sfValidatorDateTime(),

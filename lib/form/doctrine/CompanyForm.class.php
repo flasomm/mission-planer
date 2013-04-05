@@ -17,7 +17,7 @@ class CompanyForm extends BaseCompanyForm
 	);	
 	
 	$this->widgetSchema['adresse'] = new sfWidgetFormTextarea();	
-	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();		
+	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();
 	
   }
 }

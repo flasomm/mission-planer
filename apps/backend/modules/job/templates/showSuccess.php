@@ -1,46 +1,41 @@
-<table>
-  <tbody>
-    <tr>
-      <th>Id:</th>
-      <td><?php echo $job->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Date presentation:</th>
-      <td><?php echo $job->getDatePresentation() ?></td>
-    </tr>
-    <tr>
-      <th>Position:</th>
-      <td><?php echo $job->getPosition() ?></td>
-    </tr>
-    <tr>
-      <th>Tjm:</th>
-      <td><?php echo $job->getTjm() ?></td>
-    </tr>
-    <tr>
-      <th>Client:</th>
-      <td><?php echo $job->getClientId() ?></td>
-    </tr>
-    <tr>
-      <th>Statut:</th>
-      <td><?php echo $job->getStatut() ?></td>
-    </tr>
-    <tr>
-      <th>Commentaire:</th>
-      <td><?php echo $job->getCommentaire() ?></td>
-    </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $job->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $job->getUpdatedAt() ?></td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<a href="<?php echo url_for('job/edit?id='.$job->getId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('job/index') ?>">List</a>
+<?php use_stylesheet('job.css') ?>
+<?php use_helper('Text') ?>
+ 
+<div id="job">
+  <h1><?php echo $job->getClient()->getNom() ?></h1>
+  <h2><?php echo $job->getClient()->getVille() ?></h2>
+  <h3>
+    <?php echo $job->getPosition()->getTitre() ?>
+	<small> - <?php echo ($job->getStatut() == 1 ? "Acceptée" : "Refusée") ?></small>
+	<small> - <?php echo ($job->getTjm() . " €/jour") ?></small>	
+  </h3>
+	
+	Contact : <?php echo ($job->getContact()->__toString()) ?><br/>
+ 
+  <?php if ($job->getFournisseur()->getLogo()): ?>
+    <div class="logo">
+      <a href="<?php echo $job->getFournisseur()->getUrl() ?>">
+        <img src="/uploads/company/<?php echo $job->getFournisseur()->getLogo() ?>"
+          alt="<?php echo $job->getFournisseur()->getNom() ?> logo" />
+      </a>
+    </div>
+  <?php endif ?>
+ 
+  <div class="description">
+    <?php echo simple_format_text($job->getCommentaire()) ?>
+  </div>
+ 
+  <h4>Date de présentation: </h4>
+ 
+  <p class="how_to_apply"><?php echo $job->getDatePresentation() ?></p>
+ 
+  <div class="meta">
+    <small>posted on <?php echo $job->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
+  </div>
+ 
+  <div style="padding: 20px 0">
+	<hr />
+	<a href="<?php echo url_for('job/index') ?>">Retour à la liste</a> |
+    <a href="<?php echo url_for('job/edit?id='.$job->getId()) ?>">Editer</a>
+  </div>
+</div>

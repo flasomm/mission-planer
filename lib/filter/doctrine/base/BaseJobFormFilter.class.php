@@ -13,10 +13,12 @@ abstract class BaseJobFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'date_presentation' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'client_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Client'), 'add_empty' => true)),
+      'date_presentation' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'position_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Position'), 'add_empty' => true)),
       'tjm'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'client_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
+      'fournisseur_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Fournisseur'), 'add_empty' => true)),
+      'contact_id'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'statut'            => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'commentaire'       => new sfWidgetFormFilterInput(),
       'created_at'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -24,10 +26,12 @@ abstract class BaseJobFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'client_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Client'), 'column' => 'id')),
       'date_presentation' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'position_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Position'), 'column' => 'id')),
       'tjm'               => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
-      'client_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
+      'fournisseur_id'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Fournisseur'), 'column' => 'id')),
+      'contact_id'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'statut'            => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'commentaire'       => new sfValidatorPass(array('required' => false)),
       'created_at'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -52,10 +56,12 @@ abstract class BaseJobFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                => 'Number',
+      'client_id'         => 'ForeignKey',
       'date_presentation' => 'Date',
       'position_id'       => 'ForeignKey',
       'tjm'               => 'Number',
-      'client_id'         => 'ForeignKey',
+      'fournisseur_id'    => 'ForeignKey',
+      'contact_id'        => 'Number',
       'statut'            => 'Boolean',
       'commentaire'       => 'Text',
       'created_at'        => 'Date',

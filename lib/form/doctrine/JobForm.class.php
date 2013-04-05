@@ -16,7 +16,8 @@ class JobForm extends BaseJobForm
 		$this['created_at'], $this['updated_at']
 	);	
 	
-	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();	
+	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();
+	$this->widgetSchema['date_presentation'] = new sfWidgetFormDateTime(array('date' =>array('format'=>'%day%/%month%/%year%')));
 	
   }
 }

@@ -11,13 +11,16 @@
 				<?php echo $company->getNom() ?>
 			</a>
 		</td>
-        <td class="position">
+        <td class="telephone">
 			<?php echo $company->getTelephone() ?>
         </td>
-        <td class="company"><?php echo $company->getVille() ?></td>
+        <td class="ville_right"><?php echo $company->getVille() ?></td>
       </tr>
     <?php endforeach ?>
   </table>
-</div>
 
-<a href="<?php echo url_for('company/new') ?>">Ajouter une entreprise</a>
+  <div style="padding: 20px 0">
+	<hr />
+ 	<a href="<?php echo url_for('company/new') ?>">Ajouter une entreprise</a>
+  </div>
+</div>

@@ -8,12 +8,12 @@
   <table>
     <tfoot>
       <tr>
-        <td colspan="2">
-          &nbsp;<a href="<?php echo url_for('company/index') ?>">Back to list</a>
+        <td colspan="2" style="padding: 20px 0">
+          &nbsp;<a href="<?php echo url_for('company/index') ?>">Retour à la liste</a>
           <?php if (!$form->getObject()->isNew()): ?>
             &nbsp;<?php echo link_to('Delete', 'company/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
           <?php endif; ?>
-          <input type="submit" value="Save" />
+          <input type="submit" value="Enregistrer" />
         </td>
       </tr>
     </tfoot>

@@ -1,3 +1,3 @@
-<h1>New Company</h1>
+<h1>Nouvelle Entreprise</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

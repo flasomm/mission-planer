@@ -62,7 +62,7 @@
  
       <div id="footer">
         <div class="content">
-			© 2013 Physalix, all rights reserved. Physalix, the Physalix logo, are registered trademarks of Physalix EURL.
+			© 2013 Physalix, all rights reserved.
         </div>
       </div>
     </div>

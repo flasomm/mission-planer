@@ -1,30 +1,20 @@
-<table>
-  <tbody>
-    <tr>
-      <th>Id:</th>
-      <td><?php echo $position->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Titre:</th>
-      <td><?php echo $position->getTitre() ?></td>
-    </tr>
-    <tr>
-      <th>Commentaire:</th>
-      <td><?php echo $position->getCommentaire() ?></td>
-    </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $position->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $position->getUpdatedAt() ?></td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<a href="<?php echo url_for('position/edit?id='.$position->getId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('position/index') ?>">List</a>
+<?php use_stylesheet('job.css') ?>
+<?php use_helper('Text') ?>
+ 
+<div id="job">
+  <h1><?php echo $position->getTitre() ?></h1>
+ 
+  <div class="description">
+    <?php echo simple_format_text($position->getCommentaire()) ?>
+  </div>
+ 
+  <div class="meta">
+    <small>posted on <?php echo $position->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
+  </div>
+ 
+  <div style="padding: 20px 0">
+	<hr />
+	<a href="<?php echo url_for('position/index') ?>">Retour à la liste</a> |
+    <a href="<?php echo url_for('position/edit?id='.$position->getId()) ?>">Editer</a>
+  </div>
+</div>

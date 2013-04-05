@@ -16,5 +16,6 @@ class ContactForm extends BaseContactForm
 		$this['created_at'], $this['updated_at']
 	);	
 	
+	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();	
   }
 }
