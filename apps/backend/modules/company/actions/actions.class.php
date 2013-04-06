@@ -80,9 +80,9 @@ class companyActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $company = $form->save();
+      	$company = $form->save();
 
-      $this->redirect('company/edit?id='.$company->getId());
+      $this->redirect('company/show?id='.$company->getId());
     }
   }
 }

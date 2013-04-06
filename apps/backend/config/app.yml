@@ -4,3 +4,10 @@
 # default values
 all:
    max_page_on_homepage: 10
+   sfImageTransformPlugin:
+     default_adapter: GD # GD or ImageMagick
+     default_image:
+       mime_type: image/jpg
+     mime_type:
+       auto_detect: true
+       library: gd_mime_type #  gd_mime_type (GD), Fileinfo (PECL), MIME_Type (PEAR)

@@ -13,8 +13,8 @@
  
   <?php if ($company->getLogo()): ?>
     <div class="logo">
-      <a href="<?php echo $company->getUrl() ?>">
-        <img src="/uploads/company/<?php echo $company->getLogo() ?>"
+      <a target="_blank" href="<?php echo $company->getUrl() ?>">
+        <img src="/uploads/companys/<?php echo $company->getLogo() ?>"
           alt="<?php echo $company->getNom() ?> logo" />
       </a>
     </div>
@@ -32,10 +32,10 @@
 	<?php endif; ?>
 
   <div class="meta">
-    <small>posted on <?php echo $company->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
+    <small>Posté le <?php echo $company->getDateTimeObject('created_at')->format('m/d/Y') ?></small>
   </div>
  
-  <div style="padding: 20px 0">
+  <div style="padding: 20px 0; clear: both;">
 	<hr />
 	<a href="<?php echo url_for('company/index') ?>">Retour à la liste</a> |
     <a href="<?php echo url_for('company/edit?id='.$company->getId()) ?>">Editer</a>

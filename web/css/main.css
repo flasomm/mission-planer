@@ -87,5 +87,5 @@ em{font-style:italic;}
 #job .details {margin: 15px 10px;}
 #job h2 a {color:#fff;font-style: normal;}
 #content form {margin: 15px 10px;}
-#content input[type=text], #content textarea {margin:5px 0 0 10px; width:230px;}
+#content input[type=text], #content input[type=file], #content textarea {margin:5px 0 0 10px; width:230px;}
 #content select {margin:5px 0 0 10px;}

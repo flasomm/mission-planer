@@ -15,7 +15,7 @@
   <?php if ($job->getFournisseur()->getLogo()): ?>
     <div class="logo">
       <a href="<?php echo $job->getFournisseur()->getUrl() ?>">
-        <img src="/uploads/company/<?php echo $job->getFournisseur()->getLogo() ?>"
+        <img src="/uploads/companys/<?php echo $job->getFournisseur()->getLogo() ?>"
           alt="<?php echo $job->getFournisseur()->getNom() ?> logo" />
       </a>
     </div>

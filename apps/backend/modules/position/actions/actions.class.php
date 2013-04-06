@@ -74,7 +74,7 @@ class positionActions extends sfActions
     {
       $position = $form->save();
 
-      $this->redirect('position/edit?id='.$position->getId());
+      $this->redirect('position/show?id='.$position->getId());
     }
   }
 }

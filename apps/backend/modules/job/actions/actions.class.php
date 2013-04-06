@@ -81,7 +81,7 @@ class jobActions extends sfActions
     {
       	$job = $form->save();
 		
-      $this->redirect('job/edit?id='.$job->getId());
+      $this->redirect('job/show?id='.$job->getId());
     }
   }
 

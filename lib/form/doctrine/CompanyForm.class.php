@@ -18,6 +18,17 @@ class CompanyForm extends BaseCompanyForm
 	
 	$this->widgetSchema['adresse'] = new sfWidgetFormTextarea();	
 	$this->widgetSchema['commentaire'] = new sfWidgetFormTextarea();
+
+	$this->widgetSchema['logo'] = new sfWidgetFormInputFile(array(
+	  'label' => 'Logo',
+	));	
 	
+	$this->validatorSchema['logo'] = new sfValidatorFile(array(
+	  'required'   => false,
+	  'path'       => sfConfig::get('sf_upload_dir').'/companys',
+	  'mime_types' => 'web_images',
+	  'validated_file_class' => 'sfValidatedFileCustom'
+	));	
   }
+
 }
